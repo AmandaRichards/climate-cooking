@@ -7,8 +7,8 @@ import {Row, Col} from 'react-bootstrap';
 const Recipe = () => {
 
     const [recipe, setRecipe] = useState();
-    const [method, setMethod] = useState();
-    const [ingredients, setIngredients] =useState(); 
+    const [method, setMethod] = useState([]);
+    const [ingredients, setIngredients] =useState([]); 
 
     useEffect(()=>{
     async function getRecipe(){
@@ -37,10 +37,19 @@ const Recipe = () => {
             </Row>
             <Row>
                 <Col>
-                <ol>
-                    <li></li>
-                </ol>{ingredients}</Col>
-                <Col>{method}</Col>
+                <ul>{ingredients.map(function(ingredient, i){
+  console.log('test');
+  return <li key={i}>{ingredient}</li>
+})}
+</ul>
+                 
+                </Col>
+                <Col>
+                    <ol>{method.map(function(step, i){
+  console.log('test');
+  return <li key={i}>{step}</li>
+})}</ol>
+                </Col>
             </Row>
         </div>
     )
