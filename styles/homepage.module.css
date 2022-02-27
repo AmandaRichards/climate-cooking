@@ -1,0 +1,71 @@
+.body{
+    background-color: #F1DEDE;
+}
+
+.row {
+    justify-content: center;
+    --bs-gutter-x: unset;
+    height: 5vh
+
+}
+
+.row:nth-child(1) {
+    height: 20vh;
+    margin: 1em
+}
+
+.row:nth-child(2) {
+   color: #F1DEDE
+}
+
+.row:nth-child(3) {
+    height: 50vh;
+    margin: 1em
+}
+
+.row:nth-child(4) {
+    height: 3vh;
+    margin-top: 3em;
+    margin-bottom: 0em;
+    text-align: center;
+    color:  #243E36;
+  font-family: Montserrat;
+    /* font-size: 50px; */
+}
+
+.row:nth-child(5) {
+    height: 40vh;
+    margin: 0em
+}
+
+.row:nth-child(6) {
+    height: 60vh;
+    margin: 0em
+}
+.col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.banner{
+    justify-content: center;
+    display: flex;
+    height: 200px;
+}
+
+.NavBar{
+   background-color: #243E36;
+   color: #F1DEDE;
+}
+
+.box{
+    justify-content: center;
+    --bs-gutter-x: unset;
+    height: 100vh;
+    
+    /* background-color: green; */
+    border-color: red;
+    
+}
