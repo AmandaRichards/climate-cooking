@@ -1,0 +1,22 @@
+.body{
+    align-content: center;
+    justify-content: center;
+    background-color: #F1DEDE;;
+   
+}
+
+.h1{
+    text-align: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.list{
+    /* align-items: center;
+    justify-content: center;
+     display: inline-block; */
+       display: table; 
+    margin: 0 auto;
+    text-align: left;
+    padding-bottom: 2em;
+}

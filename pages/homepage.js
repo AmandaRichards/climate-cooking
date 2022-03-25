@@ -11,7 +11,11 @@ import FactCarousel from '../Components/FactCarrousel'
 import Link from 'next/link'
 
 const Homepage = () => {
-      const router = useRouter()
+    //  const [recipe, setRecipe] = useState();
+
+    //  function handleClick(){
+    //      setRecipe(title)
+    //  }
     return (
         <div className={css.body}>
         <Row className={css.row}> <Header text={"Climate-Conscious Cooking"}/></Row>
@@ -20,9 +24,9 @@ const Homepage = () => {
         <Row className={css.row}><h1>What's Hot?</h1> </Row>
         <Row className={css.box}> 
         
-        <Col className={css.col} xs={4}><RecipeBoxx image="https://www.ft.com/__origami/service/image/v2/images/raw/http%3A%2F%2Fcom.ft.imagepublish.upp-prod-eu.s3.amazonaws.com%2F193a7b7e-c930-11e9-a1f4-3669401ba76f?fit=scale-down&source=next&width=700" title={"Vegan Haggis"} text={"celebrate Burns Night"} link='/byCuisine'/></Col> 
-        <Col className={css.col} xs={4}><RecipeBoxx image={"https://www.budgetbytes.com/wp-content/uploads/2014/08/West-African-Peanut-Stew-V.jpg"} title={"Ugandan Peanut Stew"} text={"Transport yourself to the streets of Kampala"} link='/bycuisine'/> </Col>
-        <Col className={css.col} xs={4}><RecipeBoxx image={"https://cupfulofkale.com/wp-content/uploads/2021/03/Vegan-Spinach-and-Ricotta-Cannelloni.jpg.webp"} title={"Spinach and Ricotta Lasagne"} text={"Best enjoyed with a glass of red wine"} link='/bycuisine'/></Col>
+        <Col className={css.col} xs={4}><RecipeBoxx image="https://www.ft.com/__origami/service/image/v2/images/raw/http%3A%2F%2Fcom.ft.imagepublish.upp-prod-eu.s3.amazonaws.com%2F193a7b7e-c930-11e9-a1f4-3669401ba76f?fit=scale-down&source=next&width=700" title={"Vegan Haggis"} text={"Celebrate Burns Night with an address to a vegan haggis."} link='/recipe'/></Col> 
+        <Col className={css.col} xs={4}><RecipeBoxx image={"https://www.budgetbytes.com/wp-content/uploads/2014/08/West-African-Peanut-Stew-V.jpg"} title={"Ugandan Peanut Stew"} text={"Transport yourself to the streets of Kampala."} link='/bycuisine'/> </Col>
+        <Col className={css.col} xs={4}><RecipeBoxx image={"https://cupfulofkale.com/wp-content/uploads/2021/03/Vegan-Spinach-and-Ricotta-Cannelloni.jpg.webp"} title={"Spinach and Ricotta Lasagne"} text={"Best enjoyed with a glass of merlot."} link='/bycuisine'/></Col>
         </Row> 
         {/* <Row> */}
 {/* <RecipeBox image="https://thepeskyvegan.com/wp-content/uploads/2020/01/vegan-haggis-feature.jpg" title={"Vegan Haggis"} text={"celebrate Burns Night"} /> */}

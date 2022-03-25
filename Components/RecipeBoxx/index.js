@@ -4,12 +4,12 @@ import {Row} from 'react-bootstrap'
 import css from './RecipeBoxx.module.css'
 import Link from 'next/link'
 
-const RecipeBoxx = ({image, title, text, link}) => {
+const RecipeBoxx = ({image, title, text, link, handleClick}) => {
     return (
         <Row >
         <Card  style={{ width: '18rem' }} className={`${css.card} ${css.tooltip}`}  >
         <Link href={link}>
-        <span className={css.tooltiptext}>See recipe</span>
+        <span className={css.tooltiptext} onClick={handleClick}>See recipe</span>
         </Link>
       <Row className={css.imagediv}> 
   <Card.Img variant="top" src={image} className={css.image}/>

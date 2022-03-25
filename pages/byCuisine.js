@@ -25,7 +25,7 @@ const Recipe = () => {
 
     }
     getRecipe();
-}, [recipe])
+}, [])
     return (
         <div>
         <Header text={cuisine} />
