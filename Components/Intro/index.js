@@ -7,7 +7,7 @@ const Banner = () => {
     return (
         <Row className={css.Banner} >
         <div className={css.p}>
-            <p className={css.p}><span>Take your tastebuds across the world whilst lowering your carbon footprint. 
+            <p><span className={css.pp}>Take your tastebuds across the world whilst lowering your carbon footprint. 
           Powered by plants</span></p>
             </div>
         </Row>
