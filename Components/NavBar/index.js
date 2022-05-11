@@ -8,7 +8,7 @@ import SearchBar from '../SearchBar';
 import css from "./navBar.module.css";
 
 
-export function NavBar(){
+export function NavBar({handleChange, searchInput, recipes}){
     return(
  <div >
 <Navbar  expand="lg" sticky="top"  className={css.NavBar}>
@@ -43,7 +43,7 @@ export function NavBar(){
         </NavDropdown>
       </Nav>
     </Navbar.Collapse>
-    <SearchBar />
+    <SearchBar handleChange={handleChange} searchInput={searchInput} recipes={recipes}/>
   </Container>
 </Navbar>
     

@@ -9,29 +9,72 @@ import RecipeBox from "../Components/RecipeBox"
 import RecipeBoxx from "../Components/RecipeBoxx"
 import FactCarousel from '../Components/FactCarrousel'
 import Link from 'next/link'
+import {useState, useEffect} from 'react';
+import { SearchResult } from '../Components/SearchResult';
 
-const Homepage = () => {
+export const getStaticProps = async () => {
+    const res = await fetch(`https://climate-conscious-cooking.herokuapp.com/recipes`);
+    const data = await res.json();
+console.log(data)
+    return {
+        props: {recipes: data}
+    }
+
+}
+const Homepage = ({recipes}) => {
     //  const [recipe, setRecipe] = useState();
+const router = useRouter(); 
+const [searchInput, setSearchInput] = useState("");
+//const [recipes, setRecipes] = useState();
+const [result, setResult] = useState();
 
-    //  function handleClick(){
-    //      setRecipe(title)
-    //  }
+console.log(recipes)
+
+
+
+
+  const handleChange = (e) => {
+  e.preventDefault();
+  setSearchInput(e.target.value);
+};
+
+const handleEnter = (e) =>{
+    if (e.key === "Enter") {
+                  setResult(recipes)
+}
+}
+
+//  useEffect(()=>{
+//     async function getRecipe(){
+//         const response = await fetch(`https://climate-conscious-cooking.herokuapp.com/recipes/search/${searchInput}`)
+//         const data= await response.json();
+//         console.log({searchInput})
+//         console.log(data.payload);
+//         setRecipes(data.payload)
+//    }
+//     getRecipe();
+// }, [searchInput])
+console.log(searchInput)
     return (
         <div className={css.body}>
         <Row className={css.row}> <Header text={"Climate-Conscious Cooking"}/></Row>
-        <Row className={css.row}> <NavBar className={css.NavBar}/></Row>
+        <Row className={css.row}> <NavBar className={css.NavBar} handleChange={handleChange} searchInput={searchInput} handleEnter={handleEnter} /></Row>
         <Row xs={8} className={css.Banner}> <Banner /> </Row>
+        {result? result.map(function(recipe, i){
+ console.log(result)
+  return <SearchResult key={i} title={recipe.title} />
+})  :
+<div>
         <Row className={css.row}><h1>What's Hot?</h1> </Row>
         <Row className={css.box}> 
         
-        <Col className={css.col} xs={4}><RecipeBoxx image="https://www.ft.com/__origami/service/image/v2/images/raw/http%3A%2F%2Fcom.ft.imagepublish.upp-prod-eu.s3.amazonaws.com%2F193a7b7e-c930-11e9-a1f4-3669401ba76f?fit=scale-down&source=next&width=700" title={"Vegan Haggis"} text={"Celebrate Burns Night with an address to a vegan haggis."} link='/recipe'/></Col> 
-        <Col className={css.col} xs={4}><RecipeBoxx image={"https://www.budgetbytes.com/wp-content/uploads/2014/08/West-African-Peanut-Stew-V.jpg"} title={"Ugandan Peanut Stew"} text={"Transport yourself to the streets of Kampala."} link='/bycuisine'/> </Col>
-        <Col className={css.col} xs={4}><RecipeBoxx image={"https://cupfulofkale.com/wp-content/uploads/2021/03/Vegan-Spinach-and-Ricotta-Cannelloni.jpg.webp"} title={"Spinach and Ricotta Lasagne"} text={"Best enjoyed with a glass of merlot."} link='/bycuisine'/></Col>
+        <Col className={css.col} xs={4}><RecipeBoxx image="https://www.ft.com/__origami/service/image/v2/images/raw/http%3A%2F%2Fcom.ft.imagepublish.upp-prod-eu.s3.amazonaws.com%2F193a7b7e-c930-11e9-a1f4-3669401ba76f?fit=scale-down&source=next&width=700" title={"Vegan Haggis"} text={"Celebrate Burns Night with an address to a vegan haggis."} id={1} link={`/recipes/${1}`}/></Col> 
+        <Col className={css.col} xs={4}><RecipeBoxx image={"https://www.budgetbytes.com/wp-content/uploads/2014/08/West-African-Peanut-Stew-V.jpg"} title={"Ugandan Peanut Stew"} text={"Transport yourself to the streets of Kampala."} id={2} link={`/recipes/${2}`}/> </Col>
+        <Col className={css.col} xs={4}><RecipeBoxx image={"https://cupfulofkale.com/wp-content/uploads/2021/03/Vegan-Spinach-and-Ricotta-Cannelloni.jpg.webp"} title={"Spinach and Ricotta Lasagne"} text={"Best enjoyed with a glass of merlot."} id={3}link='/recipe'/></Col>
         </Row> 
-        {/* <Row> */}
-{/* <RecipeBox image="https://thepeskyvegan.com/wp-content/uploads/2020/01/vegan-haggis-feature.jpg" title={"Vegan Haggis"} text={"celebrate Burns Night"} /> */}
-        {/* </Row> */}
+  
         <div>
+       
         <Row className={css.row}>
         <FactCarousel />
         </Row>
@@ -40,7 +83,9 @@ const Homepage = () => {
        
             
         </div>
-    )
-}
+         } </div>
+    
+    
+)}
 
 export default Homepage

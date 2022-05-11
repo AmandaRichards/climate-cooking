@@ -5,8 +5,8 @@ import NavBar from '../Components/NavBar';
 import {Row, Col} from 'react-bootstrap';
 import css from '../styles/recipe.module.css'
 
-const Recipe = () => {
-
+const Recipe = ({id}) => {
+    const ID={id}
     const [recipe, setRecipe] = useState();
     const [method, setMethod] = useState([]);
     const [ingredients, setIngredients] =useState([]); 
@@ -14,8 +14,8 @@ const Recipe = () => {
 
     useEffect(()=>{
     async function getRecipe(){
-        const id=1
-        const response = await fetch(`https://climate-conscious-cooking.herokuapp.com/recipes/${id}`)
+       
+        const response = await fetch(`https://climate-conscious-cooking.herokuapp.com/recipes/${ID}`)
         const data= await response.json();
         console.log(data.payload);
         setRecipe(data.payload.title);
@@ -26,7 +26,7 @@ const Recipe = () => {
 
     }
     getRecipe();
-}, [recipe])
+}, [recipe, ID])
     return (
         <div className={css.body}>
         <Header text={cuisine} />
