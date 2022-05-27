@@ -11,6 +11,7 @@ import FactCarousel from '../Components/FactCarrousel'
 import Link from 'next/link'
 import {useState, useEffect} from 'react';
 import { SearchResult } from '../Components/SearchResult';
+import { Input } from '@mui/material';
 
 export const getStaticProps = async () => {
     const res = await fetch(`https://climate-conscious-cooking.herokuapp.com/recipes`);
@@ -26,7 +27,7 @@ const Homepage = ({recipes}) => {
 const router = useRouter(); 
 const [searchInput, setSearchInput] = useState("");
 //const [recipes, setRecipes] = useState();
-const [result, setResult] = useState();
+const [search, setSearch] = useState('');
 
 console.log(recipes)
 
@@ -40,30 +41,30 @@ console.log(recipes)
 
 const handleEnter = (e) =>{
     if (e.key === "Enter") {
-                  setResult(recipes)
+                  setSearch(searchInput)
 }
 }
 
-//  useEffect(()=>{
-//     async function getRecipe(){
-//         const response = await fetch(`https://climate-conscious-cooking.herokuapp.com/recipes/search/${searchInput}`)
-//         const data= await response.json();
-//         console.log({searchInput})
-//         console.log(data.payload);
-//         setRecipes(data.payload)
-//    }
-//     getRecipe();
-// }, [searchInput])
+ useEffect(()=>{
+    async function getRecipe(){
+        const response = await fetch(`https://climate-conscious-cooking.herokuapp.com/recipes/search/${search}`)
+        const data= await response.json();
+        console.log({searchInput})
+        console.log(data.payload);
+        setSearch(data.payload)
+   }
+    getRecipe();
+}, [search, searchInput])
 console.log(searchInput)
     return (
         <div className={css.body}>
         <Row className={css.row}> <Header text={"Climate-Conscious Cooking"}/></Row>
-        <Row className={css.row}> <NavBar className={css.NavBar} handleChange={handleChange} searchInput={searchInput} handleEnter={handleEnter} /></Row>
+        <Row className={css.row}> <NavBar className={css.NavBar} handleChange={handleChange} handleEnter={handleEnter} search={search}  link={`/recipes/search/${search}`}/></Row>
         <Row xs={8} className={css.Banner}> <Banner /> </Row>
-        {result? result.map(function(recipe, i){
+        {/* {result? result.map(function(recipe, i){
  console.log(result)
   return <SearchResult key={i} title={recipe.title} />
-})  :
+})  : */}
 <div>
         <Row className={css.row}><h1>What's Hot?</h1> </Row>
         <Row className={css.box}> 
